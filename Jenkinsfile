@@ -9,8 +9,8 @@ node {
         script {
             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
                 withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
-                    sh "git config user.email raj@cloudwithraj.com"
-                    sh "git config user.name RajSaha"
+                    sh "git config user.email anthony.anthonyjr@gmail.com"
+                    sh "git config user.name foanthoan"
                     sh "cat deployment.yaml"
                     // Replace the image tag in deployment.yaml with the DOCKERTAG
                     sh "sed -i 's+foanthoan/test.*+foanthoan/test:${DOCKERTAG}+g' deployment.yaml"
