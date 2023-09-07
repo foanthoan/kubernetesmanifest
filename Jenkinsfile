@@ -8,7 +8,7 @@ node {
     stage('Update GIT') {
         script {
             catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                withCredentials([usernamePassword(credentialsId: 'github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
+                withCredentials([usernamePassword(credentialsId: 'Github', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                     sh "git config user.email anthony.anthonyjr@gmail.com"
                     sh "git config user.name git-foanthoan"
                     sh "cat deployment.yaml"
@@ -17,7 +17,7 @@ node {
                     sh "cat deployment.yaml"
                     sh "git add ."
                     sh "git commit -m 'Updated Docker image tag to ${DOCKERTAG} by Jenkins Job changemanifest: ${env.BUILD_NUMBER}'"
-                    sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/kubernetesmanifest.git HEAD:main"
+                    sh "git push https://${GIT_USERNAME}:${GIT_PASSWORD}@Github.com/${GIT_USERNAME}/kubernetesmanifest.git HEAD:main"
                 }
             }
         }
